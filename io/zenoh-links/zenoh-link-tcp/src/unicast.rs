@@ -61,18 +61,7 @@ impl LinkUnicastTcp {
             );
         }
 
-        // Set the TCP linger option
-        #[allow(deprecated)]
-        if let Err(err) = socket.set_linger(Some(Duration::from_secs(
-            (*TCP_LINGER_TIMEOUT).try_into().unwrap(),
-        ))) {
-            tracing::warn!(
-                "Unable to set LINGER option on TCP link {} => {}: {}",
-                src_addr,
-                dst_addr,
-                err
-            );
-        }
+        // Not setting TCP linger: tokio::net::TcpStream::set_linger is deprecated; rely on shutdown()/read()-EOF.
 
         // Compute the MTU
         // See IETF RFC6691: https://datatracker.ietf.org/doc/rfc6691/

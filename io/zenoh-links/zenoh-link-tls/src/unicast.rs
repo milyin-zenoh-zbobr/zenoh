@@ -97,18 +97,7 @@ impl LinkUnicastTls {
             );
         }
 
-        // Set the TLS linger option
-        #[allow(deprecated)]
-        if let Err(err) = tcp_stream.set_linger(Some(Duration::from_secs(
-            (*TLS_LINGER_TIMEOUT).try_into().unwrap(),
-        ))) {
-            tracing::warn!(
-                "Unable to set LINGER option on TLS link {} => {}: {}",
-                src_addr,
-                dst_addr,
-                err
-            );
-        }
+        // Not setting TLS linger: tokio::net::TcpStream::set_linger is deprecated; rely on shutdown()/read()-EOF.
 
         // Compute the MTU
         // See IETF RFC6691: https://datatracker.ietf.org/doc/rfc6691/
