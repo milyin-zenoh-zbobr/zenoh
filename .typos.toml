@@ -1,2 +1,3 @@
-extend_identifiers = ["controllen", "msg_controllen"]
-extend_words = ["controllen", "msg_controllen"]
+[type.rust.extend-identifiers]
+controllen = "controllen"
+msg_controllen = "msg_controllen"
