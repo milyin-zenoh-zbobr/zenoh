@@ -1,0 +1,3 @@
+[type.rust.extend-identifiers]
+controllen = "controllen"
+msg_controllen = "msg_controllen"
