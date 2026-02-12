@@ -34,7 +34,7 @@ use crate::net::routing::{
     router::{InterceptorCacheValueType, Resource},
     RoutingContext,
 };
-
+#[derive(Debug)]
 pub struct Mux {
     pub handler: TransportUnicast,
     pub(crate) face: OnceLock<WeakFace>,
