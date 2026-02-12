@@ -100,6 +100,7 @@ impl Writer for &mut [u8] {
     }
 }
 
+#[derive(Debug)]
 pub struct SliceMark<'s> {
     ptr: *const u8,
     len: usize,
@@ -211,5 +212,17 @@ impl SiphonableReader for &[u8] {
             *self = crate::unsafe_slice!(self, len.get()..);
         }
         res
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn slice_mark_debug() {
+        let mut arr = [0u8; 4];
+        let mark = (&mut arr as &mut [u8]).mark();
+        let _ = format!("{:?}", mark);
     }
 }
