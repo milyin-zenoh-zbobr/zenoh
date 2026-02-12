@@ -34,7 +34,6 @@ use crate::net::routing::{
     router::{InterceptorCacheValueType, Resource},
     RoutingContext,
 };
-#[derive(Debug)]
 pub struct Mux {
     pub handler: TransportUnicast,
     pub(crate) face: OnceLock<WeakFace>,
@@ -48,6 +47,15 @@ impl Mux {
             face: OnceLock::new(),
             interceptor: ArcSwap::new(interceptor.into()),
         }
+    }
+}
+
+impl std::fmt::Debug for Mux {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Mux")
+            .field("handler", &self.handler)
+            .field("face_set", &self.face.get().is_some())
+            .finish()
     }
 }
 
