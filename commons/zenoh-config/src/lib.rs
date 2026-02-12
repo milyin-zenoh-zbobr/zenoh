@@ -70,7 +70,7 @@ pub mod connection_retry;
 pub use connection_retry::*;
 
 // Wrappers for secrecy of values
-#[derive(serde::Serialize, serde::Deserialize, Debug, Clone)]
+#[derive(serde::Serialize, serde::Deserialize, Clone)]
 pub struct SecretString(String);
 
 impl ops::Deref for SecretString {
