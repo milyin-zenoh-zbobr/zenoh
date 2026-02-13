@@ -17,6 +17,7 @@ use clap::Parser;
 use zenoh::{Config, Wait};
 use zenoh_examples::CommonArgs;
 
+#[derive(Debug)]
 struct Stats {
     round_count: usize,
     round_size: usize,
