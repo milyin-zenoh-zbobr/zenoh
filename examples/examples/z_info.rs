@@ -41,6 +41,8 @@ async fn main() {
     // Display current transports
     #[cfg(feature = "unstable")]
     {
+        println!("locators: {:?}", info.locators().await);
+
         println!("\ntransports:");
         let transports = info.transports().await;
         for transport in transports {
