@@ -20,6 +20,7 @@ use std::{
     },
     time::{Duration, Instant},
 };
+use std::fmt;
 
 use async_trait::async_trait;
 use flume::{bounded, Receiver, RecvError, Sender};
@@ -109,6 +110,22 @@ impl PartialEq for TimedEvent {
     }
 }
 
+impl fmt::Debug for TimedHandle {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_tuple("TimedHandle").finish()
+    }
+}
+
+impl fmt::Debug for TimedEvent {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("TimedEvent")
+            .field("when", &self.when)
+            .field("period", &self.period)
+            .field("is_fused", &self.fused.load(AtomicOrdering::Acquire))
+            .finish()
+    }
+}
+
 async fn timer_task(
     events: Arc<Mutex<BinaryHeap<TimedEvent>>>,
     new_event: Receiver<(bool, TimedEvent)>,
@@ -191,6 +208,15 @@ pub struct Timer {
     events: Arc<Mutex<BinaryHeap<TimedEvent>>>,
     sl_sender: Option<Sender<()>>,
     ev_sender: Option<Sender<(bool, TimedEvent)>>,
+}
+
+impl fmt::Debug for Timer {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("Timer")
+            .field("has_sl_sender", &self.sl_sender.is_some())
+            .field("has_ev_sender", &self.ev_sender.is_some())
+            .finish()
+    }
 }
 
 impl Timer {
