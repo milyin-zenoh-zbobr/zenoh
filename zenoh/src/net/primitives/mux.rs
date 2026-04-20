@@ -34,7 +34,6 @@ use crate::net::routing::{
     interceptor::{has_interceptor, InterceptorContext, InterceptorTrait, InterceptorsChain},
     RoutingContext,
 };
-
 pub struct Mux {
     pub handler: TransportUnicast,
     pub(crate) interceptor: ArcSwapOption<InterceptorsChain>,
@@ -71,6 +70,15 @@ impl Mux {
     #[inline(always)]
     fn schedule(&self, mut msg: NetworkMessageMut) -> bool {
         self.can_schedule(&mut msg) && self.handler.schedule(msg).unwrap_or(false)
+    }
+}
+
+impl std::fmt::Debug for Mux {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Mux")
+            .field("handler", &self.handler)
+            .field("face_set", &self.face.get().is_some())
+            .finish()
     }
 }
 
