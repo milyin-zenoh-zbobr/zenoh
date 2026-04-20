@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/eclipse-zenoh/zenoh/master/zenoh-dragon.png" height="150">
+<img src="https://raw.githubusercontent.com/eclipse-zenoh/zenoh/main/zenoh-dragon.png" height="150">
 
 [![CI](https://github.com/eclipse-zenoh/zenoh/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/eclipse-zenoh/zenoh/actions?query=workflow%3ACI+branch%3Amain++)
 [![Documentation Status](https://readthedocs.org/projects/zenoh-rust/badge/?version=latest)](https://zenoh-rust.readthedocs.io/en/latest/?badge=latest)
@@ -14,7 +14,7 @@ Eclipse Zenoh: Zero Overhead Pub/Sub, Store/Query and Compute.
 
 Zenoh (pronounced _/zeno/_) unifies data in motion, data at rest, and computations. It carefully blends traditional pub/sub with geo-distributed storage, queries, and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
 
-Check the website [zenoh.io](http://zenoh.io) for more information and [installation instructions](https://zenoh.io/docs/getting-started/installation/).
+Check the website [zenoh.io](https://zenoh.io) for more information and [installation instructions](https://zenoh.io/docs/getting-started/installation/).
 
 See also the [roadmap](https://github.com/eclipse-zenoh/roadmap) for more detailed technical information.
 
@@ -81,7 +81,7 @@ There are multiple features in `zenoh`; see the full list and descriptions on [d
 use shared memory, it must be explicitly enabled:
 
 ```toml
-zenoh = {version = "1.5.1", features = ["shared-memory"]}
+zenoh = {version = "1.7.2", features = ["shared-memory"]}
 ```
 
 ## Examples
