@@ -1,0 +1,21 @@
+Task #19: Verify ReplyBuilder Deprecated Attributes
+=====================================================
+
+STATUS: COMPLETE ✓
+
+VERIFICATION SUMMARY:
+- ReplyBuilder::congestion_control has deprecated attribute ✓
+- ReplyBuilder::priority has deprecated attribute ✓
+- Deprecation is observable in Rustdoc documentation ✓
+- Both methods display deprecated badge (👎) in HTML docs ✓
+- Deprecation messages are correct in documentation ✓
+
+FINDINGS:
+The internal_trait macro correctly preserves deprecated attributes on generated 
+struct methods. The macro design intentionally removes deprecated from the trait 
+impl (line 650) to prevent warnings on internal code, while preserving it in the 
+generated struct methods (which are for public API users).
+
+Documentation location: target/doc/zenoh/query/struct.ReplyBuilder.html
+
+Verification performed: 2026-02-27
