@@ -1515,7 +1515,7 @@ fn user_conf_validator(u: &UsrPwdConf) -> bool {
 ///     }
 /// }
 /// ```
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PluginsConfig {
     values: Value,
     validator: std::sync::Weak<dyn ConfigValidator>,
@@ -1681,14 +1681,6 @@ impl<'a> serde::Deserialize<'a> for PluginsConfig {
             values: serde::Deserialize::deserialize(deserializer)?,
             validator: std::sync::Weak::<()>::new(),
         })
-    }
-}
-
-impl std::fmt::Debug for PluginsConfig {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let mut values: Value = self.values.clone();
-        sift_privates(&mut values);
-        write!(f, "{values:?}")
     }
 }
 
