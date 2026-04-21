@@ -219,7 +219,7 @@ pub const ALL_SUPPORTED_LINKS: &[LinkKind] = &[
     LinkKind::Vscock,
 ];
 
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Debug)]
 pub struct LocatorInspector {
     #[cfg(feature = "transport_quic")]
     quic_inspector: QuicLocatorInspector,
@@ -301,7 +301,7 @@ impl LocatorInspector {
         }
     }
 }
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct LinkConfigurator {
     #[cfg(feature = "transport_tcp")]
     tcp_inspector: TcpConfigurator,
@@ -368,6 +368,7 @@ impl LinkConfigurator {
 /*             UNICAST               */
 /*************************************/
 
+#[derive(Debug)]
 pub struct LinkManagerBuilderUnicast;
 
 impl LinkManagerBuilderUnicast {
@@ -412,6 +413,7 @@ impl LinkManagerBuilderUnicast {
 /*            MULTICAST              */
 /*************************************/
 
+#[derive(Debug)]
 pub struct LinkManagerBuilderMulticast;
 
 impl LinkManagerBuilderMulticast {
