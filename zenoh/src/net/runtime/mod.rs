@@ -743,6 +743,12 @@ impl Deref for DynamicRuntime {
     }
 }
 
+impl std::fmt::Debug for DynamicRuntime {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_tuple("DynamicRuntime").finish()
+    }
+}
+
 impl StructVersion for DynamicRuntime {
     fn struct_version() -> &'static str {
         crate::GIT_VERSION

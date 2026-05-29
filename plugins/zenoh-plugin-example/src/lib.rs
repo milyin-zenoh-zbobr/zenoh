@@ -116,6 +116,7 @@ impl Plugin for ExamplePlugin {
 }
 
 // An inner-state for the RunningPlugin
+#[derive(Debug)]
 struct RunningPluginInner {
     flag: Arc<AtomicBool>,
     name: String,

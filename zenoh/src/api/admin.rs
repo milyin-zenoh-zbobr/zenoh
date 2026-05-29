@@ -69,7 +69,7 @@ static KE_TRANSPORT_MULTICAST: &keyexpr = ke!("transport/multicast");
 static KE_LINK: &keyexpr = ke!("link");
 
 // JSON structures for making adminspace independent of internal structures
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, Debug)]
 struct TransportJson {
     zid: ZenohId,
     whatami: WhatAmI,
