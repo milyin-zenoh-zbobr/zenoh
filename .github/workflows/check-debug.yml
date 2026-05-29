@@ -1,0 +1,15 @@
+name: Check Debug on public types
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  debug-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run debug check
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE || true
+          bash scripts/check-debug.sh
