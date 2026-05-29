@@ -1,0 +1,14 @@
+name: Check Debug derives
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run check-debug script
+        run: |
+          chmod +x ./scripts/check-debug.sh
+          ./scripts/check-debug.sh
