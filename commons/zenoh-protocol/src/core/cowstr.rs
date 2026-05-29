@@ -113,3 +113,15 @@ impl core::ops::Add<&str> for CowStr<'_> {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::CowStr;
+
+    #[test]
+    fn debug_shows_str() {
+        let c = CowStr::from("hello");
+        assert_eq!(format!("{:?}", c), "hello");
+    }
+}
+

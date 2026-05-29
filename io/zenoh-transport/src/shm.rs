@@ -176,7 +176,7 @@ impl TransportShmConfig {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct MulticastTransportShmConfig;
 
 impl PartnerShmConfig for MulticastTransportShmConfig {
